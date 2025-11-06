@@ -99,5 +99,41 @@ document.getElementById('lightbox').addEventListener('click', e => {
     if (e.key === 'ArrowLeft') show(currentIndex - 1);
     if (e.key === 'ArrowRight') show(currentIndex + 1);
   });
+})();/* === Lightbox controls (close/backdrop/Esc) === */
+(() => {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+
+  const img = lb.querySelector('.pc-lightbox__img');
+  const btnClose = lb.querySelector('.pc-lightbox__close');
+  const btnPrev  = lb.querySelector('.pc-lightbox__prev');
+  const btnNext  = lb.querySelector('.pc-lightbox__next');
+
+  // Close function
+  function closeLB() {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    img.removeAttribute('src');
+    img.alt = '';
+  }
+
+  // Hook up buttons (close/prev/next are safe even if unused)
+  btnClose?.addEventListener('click', closeLB);
+  btnPrev?.addEventListener('click', (e) => e.stopPropagation());
+  btnNext?.addEventListener('click', (e) => e.stopPropagation());
+
+  // Backdrop click closes (clicks on image/buttons do not)
+  lb.addEventListener('click', (e) => {
+    const onBtn = e.target.closest('.pc-lightbox__btn');
+    if (e.target === img || onBtn) return;
+    closeLB();
+  });
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLB();
+  });
 })();
+
 
