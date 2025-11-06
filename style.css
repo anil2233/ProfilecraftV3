@@ -239,5 +239,7 @@ p{color:var(--muted)} .badge{display:inline-flex;gap:8px;align-items:center;back
 /* Backdrop click target: let clicks outside the image close the viewer */
 .pc-lightbox.is-open { cursor: zoom-out; }
 .pc-lightbox.is-open .pc-lightbox__img,
-.pc-lightbox.is-open .pc-lightbox__btn { cursor: default; }
+.pc-lightbox.is-open .pc-lightbox__btn { cursor: default; }.pc-lightbox__img { z-index: 1000; }
+.pc-lightbox__btn { z-index: 1001; }
+
 
