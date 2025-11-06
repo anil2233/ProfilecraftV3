@@ -30,4 +30,74 @@ document.getElementById('lightbox').addEventListener('click', e => {
   if (e.target === e.currentTarget) {
     e.currentTarget.style.display = 'none';
   }
-});
+});/* === Lightbox (ProfileCraft) === */
+(() => {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+
+  const img = lb.querySelector('.pc-lightbox__img');
+  const btnClose = lb.querySelector('.pc-lightbox__close');
+  const btnPrev  = lb.querySelector('.pc-lightbox__prev');
+  const btnNext  = lb.querySelector('.pc-lightbox__next');
+
+  let currentIndex = -1;
+  let groupName = null;
+  let groupEls = [];
+
+  function setGroup(name) {
+    groupName = name;
+    groupEls = Array.from(document.querySelectorAll(`[data-lightbox="${name}"]`));
+  }
+
+  function show(index) {
+    if (!groupEls.length) return;
+    currentIndex = (index + groupEls.length) % groupEls.length; // wrap
+    const a = groupEls[currentIndex];
+    const full = a.getAttribute('href');
+    const alt = (a.querySelector('img')?.getAttribute('alt')) || '';
+    img.src = full;
+    img.alt = alt;
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    btnClose.focus();
+  }
+
+  function close() {
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    img.removeAttribute('src');
+    img.alt = '';
+  }
+
+  // Delegate clicks on anchors with data-lightbox
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-lightbox]');
+    if (!link) return;
+    e.preventDefault();
+    const name = link.getAttribute('data-lightbox') || 'gallery';
+    setGroup(name);
+    const idx = groupEls.indexOf(link);
+    show(idx);
+  });
+
+  // Buttons
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', () => show(currentIndex - 1));
+  btnNext.addEventListener('click', () => show(currentIndex + 1));
+
+  // Backdrop click (not on image/buttons)
+  lb.addEventListener('click', (e) => {
+    const insideImage = e.target === img;
+    const onButton = e.target.closest('.pc-lightbox__btn');
+    if (!insideImage && !onButton) close();
+  });
+
+  // Keyboard: Esc to close, arrows to navigate
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(currentIndex - 1);
+    if (e.key === 'ArrowRight') show(currentIndex + 1);
+  });
+})();
+
