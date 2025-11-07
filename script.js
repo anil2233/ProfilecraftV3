@@ -12,25 +12,7 @@ prevBtn&&prevBtn.addEventListener('click',()=>navLB(-1)); nextBtn&&nextBtn.addEv
 lightbox&&lightbox.addEventListener('click',e=>{ if(e.target===lightbox) closeLB(); });
 let sx=0; lightbox&&lightbox.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
 lightbox&&lightbox.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) navLB(dx<0?1:-1);},{passive:true});
-// Simple lightbox functionality
-document.querySelectorAll('.hero-thumb').forEach(img => {
-  img.addEventListener('click', () => {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = img.src;
-    lightbox.style.display = 'flex';
-  });
-});
-
-document.querySelector('.close-btn').addEventListener('click', () => {
-  document.getElementById('lightbox').style.display = 'none';
-});
-
-document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === e.currentTarget) {
-    e.currentTarget.style.display = 'none';
-  }
-});/* === Lightbox (ProfileCraft) === */
+/* === Lightbox (ProfileCraft) === */
 (() => {
   const lb = document.getElementById('lightbox');
   if (!lb) return;
