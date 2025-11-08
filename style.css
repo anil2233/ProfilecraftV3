@@ -24,7 +24,7 @@ body {
   color: var(--ink);
     background:
     radial-gradient(circle at 15% 20%, rgba(222,201,238,0.25), transparent 60%),
-    radial-gradient(circle at 85% 60%, rgba(203,234,225,0.20), transparent 70%),
+    radial-gradient(circle at 85% 60%, rgba(180,230,215,0.35), transparent 70%),
     linear-gradient(180deg,#f5f3ff 0%, #fefaf7 60%, #ffffff 100%);
 }
 .container { width:min(1150px,92vw); margin:0 auto; }
