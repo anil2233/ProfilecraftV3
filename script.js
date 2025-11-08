@@ -1,121 +1,90 @@
+/* ============================
+   ProfileCraft — minimal JS
+   - burger menu
+   - image lightbox (pc-lightbox)
+   ============================ */
 
-const burger=document.querySelector('.burger'); const nav=document.querySelector('.nav');
-burger&&burger.addEventListener('click',()=>nav.classList.toggle('show'));
-const lightbox=document.querySelector('.lightbox'); const lbImg=document.querySelector('.lightbox img');
-const prevBtn=document.querySelector('.lb-prev'); const nextBtn=document.querySelector('.lb-next'); const closeBtn=document.querySelector('.lb-close');
-let galleryNodes=[...document.querySelectorAll('.figure img')]; let idx=0;
-function openLB(i){ idx=i; lbImg.src=galleryNodes[idx]?.dataset.full||galleryNodes[idx]?.src||''; lightbox&&lightbox.classList.add('show'); }
-function closeLB(){ lightbox&&lightbox.classList.remove('show'); }
-function navLB(d){ idx=(idx+d+galleryNodes.length)%galleryNodes.length; lbImg.src=galleryNodes[idx]?.dataset.full||galleryNodes[idx]?.src||''; }
-galleryNodes.forEach((img,i)=>{ img.addEventListener('click',()=>openLB(i)); img.setAttribute('tabindex','0'); img.addEventListener('keydown',e=>{if(e.key==='Enter')openLB(i);}); });
-prevBtn&&prevBtn.addEventListener('click',()=>navLB(-1)); nextBtn&&nextBtn.addEventListener('click',()=>navLB(1)); closeBtn&&closeBtn.addEventListener('click',closeLB);
-lightbox&&lightbox.addEventListener('click',e=>{ if(e.target===lightbox) closeLB(); });
-let sx=0; lightbox&&lightbox.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
-lightbox&&lightbox.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) navLB(dx<0?1:-1);},{passive:true});
-/* === Lightbox (ProfileCraft) === */
-(() => {
-  const lb = document.getElementById('lightbox');
+// Burger (mobile nav)
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav');
+if (burger && nav) {
+  burger.addEventListener('click', () => nav.classList.toggle('show'));
+}
+
+// -------- Lightbox ----------
+const lb = document.getElementById('lightbox');
+const lbImg = lb ? lb.querySelector('.pc-lightbox__img') : null;
+const btnClose = lb ? lb.querySelector('.pc-lightbox__close') : null;
+const btnPrev = lb ? lb.querySelector('.pc-lightbox__prev') : null;
+const btnNext = lb ? lb.querySelector('.pc-lightbox__next') : null;
+
+// Collect all clickable images on the page (hero + thumbs + gallery)
+const clickables = Array.from(document.querySelectorAll(
+  '.hero-main img, .hero-thumbs img, .gallery-grid img, .figure img'
+));
+
+let currentIndex = -1;
+
+function openLightbox(index) {
+  if (!lb || !lbImg) return;
+  currentIndex = index;
+  const src = clickables[currentIndex].getAttribute('src');
+  const alt = clickables[currentIndex].getAttribute('alt') || '';
+  lbImg.src = src;
+  lbImg.alt = alt;
+  lb.classList.add('is-open');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden'; // prevent page scroll
+}
+
+function closeLightbox() {
   if (!lb) return;
+  lb.classList.remove('is-open');
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
 
-  const img = lb.querySelector('.pc-lightbox__img');
-  const btnClose = lb.querySelector('.pc-lightbox__close');
-  const btnPrev  = lb.querySelector('.pc-lightbox__prev');
-  const btnNext  = lb.querySelector('.pc-lightbox__next');
+function showPrev() {
+  if (currentIndex <= 0) currentIndex = clickables.length - 1;
+  else currentIndex -= 1;
+  openLightbox(currentIndex);
+}
 
-  let currentIndex = -1;
-  let groupName = null;
-  let groupEls = [];
+function showNext() {
+  if (currentIndex >= clickables.length - 1) currentIndex = 0;
+  else currentIndex += 1;
+  openLightbox(currentIndex);
+}
 
-  function setGroup(name) {
-    groupName = name;
-    groupEls = Array.from(document.querySelectorAll(`[data-lightbox="${name}"]`));
-  }
-
-  function show(index) {
-    if (!groupEls.length) return;
-    currentIndex = (index + groupEls.length) % groupEls.length; // wrap
-    const a = groupEls[currentIndex];
-    const full = a.getAttribute('href');
-    const alt = (a.querySelector('img')?.getAttribute('alt')) || '';
-    img.src = full;
-    img.alt = alt;
-    lb.classList.add('is-open');
-    lb.setAttribute('aria-hidden', 'false');
-    btnClose.focus();
-  }
-
-  function close() {
-    lb.classList.remove('is-open');
-    lb.setAttribute('aria-hidden', 'true');
-    img.removeAttribute('src');
-    img.alt = '';
-  }
-
-  // Delegate clicks on anchors with data-lightbox
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[data-lightbox]');
-    if (!link) return;
+// Wire up thumbnails
+clickables.forEach((img, i) => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', (e) => {
     e.preventDefault();
-    const name = link.getAttribute('data-lightbox') || 'gallery';
-    setGroup(name);
-    const idx = groupEls.indexOf(link);
-    show(idx);
+    openLightbox(i);
   });
+});
 
-  // Buttons
-  btnClose.addEventListener('click', close);
-  btnPrev.addEventListener('click', () => show(currentIndex - 1));
-  btnNext.addEventListener('click', () => show(currentIndex + 1));
+// Buttons
+if (btnClose) btnClose.addEventListener('click', closeLightbox);
+if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
 
-  // Backdrop click (not on image/buttons)
+// Backdrop click closes (but not clicks on the image/buttons)
+if (lb) {
   lb.addEventListener('click', (e) => {
-    const insideImage = e.target === img;
-    const onButton = e.target.closest('.pc-lightbox__btn');
-    if (!insideImage && !onButton) close();
+    const clickedInsideImage = e.target === lbImg || e.target.closest('.pc-lightbox__btn');
+    if (!clickedInsideImage) closeLightbox();
   });
+}
 
-  // Keyboard: Esc to close, arrows to navigate
-  document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('is-open')) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') show(currentIndex - 1);
-    if (e.key === 'ArrowRight') show(currentIndex + 1);
-  });
-})();/* === Lightbox controls (close/backdrop/Esc) === */
-(() => {
-  const lb = document.getElementById('lightbox');
-  if (!lb) return;
+// Keyboard controls
+document.addEventListener('keydown', (e) => {
+  if (!lb || !lb.classList.contains('is-open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showPrev();
+  if (e.key === 'ArrowRight') showNext();
+});
 
-  const img = lb.querySelector('.pc-lightbox__img');
-  const btnClose = lb.querySelector('.pc-lightbox__close');
-  const btnPrev  = lb.querySelector('.pc-lightbox__prev');
-  const btnNext  = lb.querySelector('.pc-lightbox__next');
-
-  // Close function
-  function closeLB() {
-    lb.classList.remove('is-open');
-    lb.setAttribute('aria-hidden', 'true');
-    img.removeAttribute('src');
-    img.alt = '';
-  }
-
-  // Hook up buttons (close/prev/next are safe even if unused)
-  btnClose?.addEventListener('click', closeLB);
-  btnPrev?.addEventListener('click', (e) => e.stopPropagation());
-  btnNext?.addEventListener('click', (e) => e.stopPropagation());
-
-  // Backdrop click closes (clicks on image/buttons do not)
-  lb.addEventListener('click', (e) => {
-    const onBtn = e.target.closest('.pc-lightbox__btn');
-    if (e.target === img || onBtn) return;
-    closeLB();
-  });
-
-  // Keyboard support
-  document.addEventListener('keydown', (e) => {
-    if (!lb.classList.contains('is-open')) return;
-    if (e.key === 'Escape') closeLB();
-  });
-})();
 
 
