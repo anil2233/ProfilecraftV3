@@ -47,11 +47,20 @@ body {
   box-shadow: 0 0 0 1px rgba(0,0,0,.06) inset;
 }
 .nav { display:flex; gap:18px; align-items:center; }
-.nav a {
-  text-decoration:none; color:#3A3F47; font-weight:600;
-  padding:10px 8px; border-radius:10px;
+.nav a{
+  text-decoration:none;
+  color:#7c5cff;                 /* same family as buttons */
+  font-weight:600;
+  padding:10px 8px;
+  border-radius:10px;
+  transition:color .2s, background .2s;
 }
-.nav a.active, .nav a:hover { color: var(--mint-ink); }
+.nav a.active,
+.nav a:hover{
+  color:#ffffff;
+  background:linear-gradient(180deg,#9d8bff 0%, #7c5cff 100%);  /* same gradient feel */
+}
+
 .burger {
   display:none; width:40px; height:40px; border-radius:12px;
   border:1px solid #eee; background:#fff;
