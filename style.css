@@ -252,16 +252,7 @@ p { color:var(--muted); }
 .pc-lightbox.is-open { cursor:zoom-out; }
 .pc-lightbox.is-open .pc-lightbox__img,
 .pc-lightbox.is-open .pc-lightbox__btn { cursor:default; }
-/* Home Showcase tiles */
-.home-showcase {
-  position: relative;
-  width: 90%;
-  margin: 24px auto;
-  aspect-ratio: 16 / 9;          /* slimmer frame */
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
+
 
 
 
