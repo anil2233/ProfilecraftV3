@@ -86,7 +86,7 @@ body {
   box-shadow:var(--shadow); padding:22px;
 }
 .grid-2 { display:grid; gap:16px; grid-template-columns:1fr; }
-@media(min-width:860px){ .grid-2{ grid-template-columns:1fr 1fr; } }
+@media(min-width:620px){ .grid-2{ grid-template-columns:1fr 1fr; } }
 
 /* --- HERO --- */
 .hero { display:grid; gap:16px; grid-template-columns:1fr; padding:28px 0 16px; }
