@@ -49,21 +49,18 @@ body {
 .nav { display:flex; gap:18px; align-items:center; }
 .nav a{
   text-decoration:none;
-  color:#20C997;
+  color:#C4CCD6; /* Silver text */
   font-weight:600;
   padding:10px 8px;
   border-radius:10px;
   transition:color .2s, background .2s;
 }
-.nav a.active,
-.nav a:hover{
+
+/* Hover and Active now share the same premium silver tone */
+.nav a:hover,
+.nav a.active{
   color:#0F172A;
-  background:linear-gradient(180deg,#52DEC1 0%, #20C997 100%);
-}
-.nav a.active,
-.nav a:hover{
-  color:#ffffff;
-  background:linear-gradient(180deg,#9d8bff 0%, #7c5cff 100%);  /* same gradient feel */
+  background:linear-gradient(180deg,#E7ECF2 0%, #C4CCD6 100%);
 }
 
 .burger {
