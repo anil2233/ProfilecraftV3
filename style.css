@@ -49,11 +49,16 @@ body {
 .nav { display:flex; gap:18px; align-items:center; }
 .nav a{
   text-decoration:none;
-  color:#7c5cff;                 /* same family as buttons */
+  color:#20C997;
   font-weight:600;
   padding:10px 8px;
   border-radius:10px;
   transition:color .2s, background .2s;
+}
+.nav a.active,
+.nav a:hover{
+  color:#0F172A;
+  background:linear-gradient(180deg,#52DEC1 0%, #20C997 100%);
 }
 .nav a.active,
 .nav a:hover{
