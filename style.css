@@ -219,7 +219,7 @@ p { color:var(--muted); }
   gap:16px; flex-wrap:wrap;
 }
 
-/* --- NEW LIGHTBOX (ProfileCraft) --- */
+/* --- NEW LIGHTBOX (VividPro) --- */
 .pc-lightbox {
   position:fixed; inset:0;
   display:none; align-items:center; justify-content:center;
