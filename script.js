@@ -1,5 +1,5 @@
 /* ============================
-   ProfileCraft — minimal JS
+   VividPro — minimal JS
    - burger menu
    - image lightbox (pc-lightbox)
    ============================ */
