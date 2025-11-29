@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Soft diagonal stripe pattern for background -->
+    <pattern id="diagStripes" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(30)">
+      <rect width="8" height="8" fill="#f3f4f6"/>
+      <rect width="4" height="8" fill="#e5e7eb" opacity="0.5"/>
+    </pattern>
+
+    <!-- Gradient for avatar circle -->
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background tile with soft pattern -->
+  <rect x="0" y="0" width="64" height="64" rx="16" ry="16" fill="url(#diagStripes)"/>
+
+  <!-- Soft spotlight -->
+  <ellipse cx="32" cy="30" rx="21" ry="18" fill="#eef2ff" />
+  <ellipse cx="32" cy="28" rx="19" ry="16" fill="#ffffff" />
+
+  <!-- Profile card -->
+  <rect x="18" y="22" width="28" height="20" rx="4" ry="4"
+        fill="#ffffff" stroke="#cbd5f5" stroke-width="1.4"/>
+
+  <!-- Avatar circle -->
+  <circle cx="24.5" cy="29" r="3.2" fill="url(#avatarGrad)"/>
+
+  <!-- Name line -->
+  <rect x="30" y="27" width="13" height="2.2" rx="1.1" fill="#4b5563"/>
+
+  <!-- Detail line -->
+  <rect x="22" y="34" width="19" height="1.8" rx="0.9" fill="#9ca3af"/>
+</svg>
