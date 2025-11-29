@@ -8,13 +8,36 @@
 </div></header>
 <main class="container"><section class="section"><div class="card">
 <h1>Get in touch</h1><p>Tell us what you need. We’ll reply quickly and discreetly.</p>
-<form name="contact" method="POST" data-netlify="true">
-<div style="display:grid;gap:12px;grid-template-columns:1fr;max-width:900px">
-<input name="name" placeholder="Full name" required style="padding:14px;border-radius:12px;border:1px solid #e9e9e9">
-<input type="email" name="email" placeholder="Email" required style="padding:14px;border-radius:12px;border:1px solid #e9e9e9">
-<textarea name="message" rows="7" placeholder="Your message" style="padding:14px;border-radius:12px;border:1px solid #e9e9e9"></textarea>
-<button class="btn btn-primary" type="submit">Send message</button>
-</div></form>
+<form action="https://formspree.io/f/xrbwjvgq" method="POST">
+  <div style="display:grid;gap:12px;grid-template-columns:1fr;max-width:900px">
+
+    <input 
+      name="name" 
+      placeholder="Full name" 
+      required 
+      style="padding:14px;border-radius:12px;border:1px solid #e9e9e9"
+    >
+
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Email" 
+      required 
+      style="padding:14px;border-radius:12px;border:1px solid #e9e9e9"
+    >
+
+    <textarea 
+      name="message" 
+      rows="7" 
+      placeholder="Your message" 
+      required
+      style="padding:14px;border-radius:12px;border:1px solid #e9e9e9"
+    ></textarea>
+
+    <button class="btn btn-primary" type="submit">Send message</button>
+
+  </div>
+</form>
 <p style="color:#6F7785;margin-top:12px">We minimise data and delete inquiries after they’re handled.</p>
 <p style="color:#6F7785;margin-top:6px">Your data and images are handled confidentially, in line with UK GDPR.</p>
 </div></section></main>
