@@ -40,12 +40,28 @@ body {
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 0;
 }
-.brand { display:flex; align-items:center; gap:10px; font-weight:700; }
-.logo {
-  width:22px; height:22px; border-radius:6px;
-  background: conic-gradient(from 120deg,var(--mauve-200),#CBEAE1,#fff);
-  box-shadow: 0 0 0 1px rgba(0,0,0,.06) inset;
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
 }
+
+/* Logo image in header */
+.logo {
+  width:22px;
+  height:22px;
+  border-radius:6px;
+  display:block;
+  object-fit:contain;
+  box-shadow:0 0 0 1px rgba(0,0,0,.06) inset;
+}
+
+/* Optional: separate styling for the text next to the logo */
+.brand-text {
+  letter-spacing:0.02em;
+}
+
 .nav { display:flex; gap:18px; align-items:center; }
 .nav a{
   text-decoration:none;
