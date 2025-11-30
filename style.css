@@ -273,6 +273,16 @@ p { color:var(--muted); }
 .pc-lightbox.is-open { cursor:zoom-out; }
 .pc-lightbox.is-open .pc-lightbox__img,
 .pc-lightbox.is-open .pc-lightbox__btn { cursor:default; }
+@media (max-width: 768px) {
+
+  /* Add colour at the top of the mobile homepage */
+  .hero {
+    background: linear-gradient(180deg, #EFE6FC 0%, #E7F4F0 100%);
+    padding-top: 40px;
+    border-radius: 0 0 20px 20px;
+  }
+
+}
 
 
 
