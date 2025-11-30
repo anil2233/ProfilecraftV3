@@ -273,16 +273,50 @@ p { color:var(--muted); }
 .pc-lightbox.is-open { cursor:zoom-out; }
 .pc-lightbox.is-open .pc-lightbox__img,
 .pc-lightbox.is-open .pc-lightbox__btn { cursor:default; }
+/* MOBILE-ONLY DESIGN FIXES */
 @media (max-width: 768px) {
 
-  /* Add colour at the top of the mobile homepage */
+  /* Step 1 — Add colour at the top */
   .hero {
     background: linear-gradient(180deg, #EFE6FC 0%, #E7F4F0 100%);
     padding-top: 40px;
     border-radius: 0 0 20px 20px;
   }
 
+  /* Step 2 — Move hero images higher */
+  .hero-media {
+    margin-top: -20px;
+  }
+
+  .hero-main img {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .hero .col:first-child {
+    padding-top: 10px;
+  }
+
+  /* Step 3 — Lighten and soften cards */
+  .card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(4px);
+  }
+
+  .card:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .card p, .card li {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
 }
+
 
 
 
