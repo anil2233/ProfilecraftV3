@@ -291,6 +291,12 @@ p { color:var(--muted); }
   }
 
 }
+.card-img {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+}
 
 
 
