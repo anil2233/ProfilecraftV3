@@ -317,6 +317,46 @@ p { color:var(--muted); }
     max-width: 220px;   /* try 220; if still too big, go down to ~180 */
   }
 }
+/* --- CONTACT PAGE THEME --- */
+
+.contact-page .card {
+  /* Make contact card match the main site cards */
+  background: #2d3848;
+  color: #E5EDF7;
+}
+
+/* Form fields inside the contact page card */
+.contact-page input[type="text"],
+.contact-page input[type="email"],
+.contact-page input[type="tel"],
+.contact-page textarea,
+.contact-page select {
+  background: #222b39;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #E5EDF7;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset;
+}
+
+/* Placeholder text colour */
+.contact-page input::placeholder,
+.contact-page textarea::placeholder {
+  color: #9CA7BF;
+}
+
+/* When the user clicks into a field */
+.contact-page input:focus,
+.contact-page textarea:focus,
+.contact-page select:focus {
+  outline: none;
+  border-color: #8BE7C4;
+  box-shadow: 0 0 0 1px #8BE7C4 inset, 0 0 0 4px rgba(139, 231, 196, 0.25);
+}
+
+/* Optional: soften the submit button slightly on this page only */
+.contact-page .btn-primary {
+  background: linear-gradient(135deg, #fdfdff, #e4f0ff);
+  color: #293548;
+}
 
 
 
