@@ -109,13 +109,21 @@ body {
   grid-template-columns:1fr 1fr;
 }
 
-/* --- HERO --- */
-.hero { display:grid; gap:16px; grid-template-columns:1fr; padding:28px 0 16px; }
-@media(min-width:860px){ .hero{ grid-template-columns:1.2fr .9fr; } }
-.hero .col {
-  background:var(--card); border-radius:var(--radius);
-  box-shadow:var(--shadow); padding:22px;
+/* NEW: centre text in the hero’s text column */
+.hero-main-text {
+  text-align: center;
 }
+
+.hero-main-text .badge {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
+
+.hero-main-text .cta-row {
+  justify-content: center;
+}
+
 h1 {
   font-size:clamp(28px,4.2vw,54px);
   line-height:1.02;
