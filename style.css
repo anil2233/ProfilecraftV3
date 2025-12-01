@@ -293,10 +293,13 @@ p { color:var(--muted); }
 }
 .card-img {
   width: 100%;
+  max-width: 520px;   /* you can try 480px or 440px if you want smaller */
+  height: auto;
   display: block;
   border-radius: var(--radius);
-  margin-bottom: 16px;
+  margin: 0 auto 16px;  /* centres the image in the card */
 }
+
 
 
 
