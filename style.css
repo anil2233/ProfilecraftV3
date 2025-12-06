@@ -357,6 +357,50 @@ p { color:var(--muted); }
   background: linear-gradient(135deg, #fdfdff, #e4f0ff);
   color: #293548;
 }
+/* Desktop-only branding block inside hero */
+.hero {
+  position: relative;
+}
+
+/* Hidden by default (mobile & small screens) */
+.hero-brand-block {
+  display: none;
+}
+
+/* Show and position on desktop */
+@media (min-width: 960px) {
+  .hero-brand-block {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    transform: translateY(-50%);
+    max-width: 420px;
+    padding: 1.75rem 2rem;
+    border-radius: 1.5rem;
+    background: rgba(19, 26, 46, 0.88);
+    color: #f8fafc;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+    z-index: 2;
+  }
+
+  .hero-brand-kicker {
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    opacity: 0.85;
+  }
+
+  .hero-brand-heading {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-weight: 600;
+    margin: 0;
+  }
+}
 
 
 
