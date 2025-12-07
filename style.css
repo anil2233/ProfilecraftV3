@@ -379,15 +379,18 @@ p { color:var(--muted); }
   font-weight: 600;
 }
 
-.contact-intro a {
-  color: #FFFFFF;            /* make links clearly readable */
+/* Contact page intro links */
+.contact-intro a,
+.contact-intro a:visited {
+  color: #FFFFFF !important;        /* force white links in the intro */
   text-decoration: underline;
 }
 
 .contact-intro a:hover,
 .contact-intro a:focus {
-  color: #C5D2FF;            /* gentle highlight on hover/focus */
+  color: #C5D2FF !important;        /* gentle highlight on hover/focus */
 }
+
 
 
 
