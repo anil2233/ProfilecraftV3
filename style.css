@@ -247,13 +247,62 @@ p { color:var(--muted); }
 }
 
 /* --- FOOTER --- */
+
 .footer {
-  padding:32px 0; color:#6b7280;
+  padding: 32px 0;
+  color: #6F7785;
+  font-size: 0.95rem;
 }
-.footer .container {
-  display:flex; justify-content:space-between; align-items:center;
-  gap:16px; flex-wrap:wrap;
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-tagline {
+  color: #9CA3AF; /* slightly lighter than the main footer text */
+}
+
+.footer-contact {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Footer links */
+.footer a,
+.footer a:visited {
+  color: #6F7785;
+  text-decoration: underline;
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: #4B5563;
+}
+
+/* Stack footer nicely on small screens */
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-contact {
+    text-align: left;
+  }
+}
+
 
 /* --- NEW LIGHTBOX (VividPro) --- */
 .pc-lightbox {
