@@ -368,6 +368,26 @@ p { color:var(--muted); }
   background: linear-gradient(135deg, #fdfdff, #e4f0ff);
   color: #293548;
 }
+/* Contact page intro details */
+.contact-intro {
+  margin: 1.5rem 0 1rem;
+  color: #E5EAF3;            /* soft light text on dark card */
+  font-size: 1.05rem;
+}
+
+.contact-intro strong {
+  font-weight: 600;
+}
+
+.contact-intro a {
+  color: #FFFFFF;            /* make links clearly readable */
+  text-decoration: underline;
+}
+
+.contact-intro a:hover,
+.contact-intro a:focus {
+  color: #C5D2FF;            /* gentle highlight on hover/focus */
+}
 
 
 
