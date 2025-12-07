@@ -316,7 +316,18 @@ p { color:var(--muted); }
   .card-img--tiny {
     max-width: 220px;   /* try 220; if still too big, go down to ~180 */
   }
+}/* Stack service grid cards on mobile */
+@media (max-width: 768px) {
+  .section.grid-2 {
+    display: block;           /* stop using side-by-side layout on small screens */
+  }
+
+  .section.grid-2 .card {
+    max-width: 100%;
+    margin-bottom: 24px;      /* space between stacked cards */
+  }
 }
+
 /* --- CONTACT PAGE THEME --- */
 
 .contact-page .card {
