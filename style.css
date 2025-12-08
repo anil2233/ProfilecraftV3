@@ -55,7 +55,20 @@ body {
   display:block;
   object-fit:contain;
   box-shadow:0 0 0 1px rgba(0,0,0,.06) inset;
+  .logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .06) inset;
+
+  /* ADD THESE LINES */
+  background-image: url('images/vividpro-logo-mark.svg');
+  background-size: cover;
+  background-position: center;
 }
+
 
 /* Optional: separate styling for the text next to the logo */
 .brand-text {
