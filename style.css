@@ -365,12 +365,21 @@ p { color:var(--muted); }
   border-radius: var(--radius);
   margin: 0 auto 16px;  /* centres the image in the card */
 }
+/* Reduce the gap above the first card row on the homepage for desktop users */
+@media (min-width: 900px) {
+  /* Target the card-row section directly following the hero section */
+  .hero + .section.card-row {
+    margin-top: -60px;
+  }
+}
+
 /* Smaller illustration size on desktop, but keep mobile as-is */
 @media (min-width: 900px) {
   .card-img--tiny {
     max-width: 220px;   /* try 220; if still too big, go down to ~180 */
   }
-}/* Stack service grid cards on mobile */
+}
+/* Stack service grid cards on mobile */
 @media (max-width: 768px) {
   .section.grid-2 {
     display: block;           /* stop using side-by-side layout on small screens */
