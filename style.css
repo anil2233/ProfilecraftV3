@@ -367,11 +367,12 @@ p { color:var(--muted); }
 }
 /* Reduce the gap above the first card row on the homepage for desktop users */
 @media (min-width: 900px) {
-  /* Target the card-row section directly following the hero section */
-  .hero + .section.card-row {
-    margin-top: -60px;
+  /* Remove extra top padding on the first card row after the hero */
+  .hero + .section.container.card-row {
+    padding-top: 0;
   }
 }
+
 
 /* Smaller illustration size on desktop, but keep mobile as-is */
 @media (min-width: 900px) {
