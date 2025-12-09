@@ -66,21 +66,23 @@ body {
 }
 
 .nav { display:flex; gap:18px; align-items:center; }
-.nav a{
-  text-decoration:none;
-  color:#C4CCD6; /* Silver text */
-  font-weight:600;
-  padding:10px 8px;
-  border-radius:10px;
-  transition:color .2s, background .2s;
+/* Navigation links: darker base colour for better contrast on scroll */
+.nav a {
+  text-decoration: none;
+  color: #293548; /* Was #C4CCD6 – this new shade stays visible over light backgrounds */
+  font-weight: 600;
+  padding: 10px 8px;
+  border-radius: 10px;
+  transition: color 0.2s, background 0.2s;
 }
 
-/* Hover and Active now share the same premium silver tone */
+/* Hover and Active states remain the same */
 .nav a:hover,
-.nav a.active{
-  color:#0F172A;
-  background:linear-gradient(180deg,#E7ECF2 0%, #C4CCD6 100%);
+.nav a.active {
+  color: #0F172A;
+  background: linear-gradient(180deg, #E7ECF2 0%, #C4CCD6 100%);
 }
+
 
 .burger {
   display:none; width:40px; height:40px; border-radius:12px;
