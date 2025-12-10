@@ -85,6 +85,49 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') showPrev();
   if (e.key === 'ArrowRight') showNext();
 });
+// Contact form: submit via AJAX so we can stay on the page
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  const statusEl = document.getElementById("contact-status");
+
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault(); // stop the normal redirect
+
+    if (statusEl) {
+      statusEl.textContent = "Sending…";
+    }
+
+    try {
+      const data = new FormData(contactForm);
+
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        if (statusEl) {
+          statusEl.textContent = "Thanks, we've received your message.";
+        }
+      } else {
+        if (statusEl) {
+          statusEl.textContent =
+            "There was a problem sending your message. Please try again, or email us directly.";
+        }
+      }
+    } catch (error) {
+      if (statusEl) {
+        statusEl.textContent =
+          "Network error — please try again in a moment.";
+      }
+    }
+  });
+}
 
 
 
