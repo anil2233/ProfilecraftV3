@@ -455,6 +455,17 @@ p { color:var(--muted); }
   color: #C5D2FF !important;        /* gentle highlight on hover/focus */
 }
 
+/* Extra hero text only on desktop to fill the gap */
+.hero-desktop-extra {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .hero-desktop-extra {
+    display: block;
+    margin-top: 1.5rem;
+  }
+}
 
 
 
