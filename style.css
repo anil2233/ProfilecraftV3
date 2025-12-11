@@ -466,6 +466,11 @@ p { color:var(--muted); }
     margin-top: 1.5rem;
   }
 }
+.form-status {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: #E5F0FF;  /* tweak if you prefer a different shade */
+}
 
 
 
