@@ -56,7 +56,7 @@ body {
   object-fit:contain;
   box-shadow:0 0 0 1px rgba(0,0,0,.06) inset;
 
-  background-image: url('images/vividpro-logo-mark.svg');
+  background-image: url('images/vividpro-logo-mark.png');
   background-size: cover;
   background-position: center;
 }
