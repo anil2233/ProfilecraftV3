@@ -8,8 +8,38 @@
 const burger = document.querySelector('.burger');
 const nav = document.querySelector('.nav');
 if (burger && nav) {
+  // Toggle nav visibility when burger is clicked
   burger.addEventListener('click', () => nav.classList.toggle('show'));
+
+  // Close menu when any nav link is clicked
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('show');
+    });
+  });
+
+  // Close menu when clicking outside the nav or burger
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('show')) return;
+
+    const clickedInsideNav = nav.contains(e.target) || burger.contains(e.target);
+    if (!clickedInsideNav) {
+      nav.classList.remove('show');
+    }
+  });
+
+  // Close menu on scroll
+  document.addEventListener(
+    'scroll',
+    () => {
+      if (nav.classList.contains('show')) {
+        nav.classList.remove('show');
+      }
+    },
+    { passive: true }
+  );
 }
+
 
 // -------- Lightbox ----------
 const lb = document.getElementById('lightbox');
